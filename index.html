@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Tanush - Cybersecurity & Full-Stack Developer</title>
+     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+     <script>
+         tailwind.config={theme:{extend:{colors:{primary:'#00A3FF',secondary:'#00E088'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}
+     </script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+     <link rel="stylesheet" href="style.css">
+ </head>
+ <script>
+    document.getElementById('mobile-menu-button').addEventListener('click', () => {
+     const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+ </script>
+ <body>
+     <!-- Navigation -->
+     <nav class="glass-nav fixed top-0 left-0 w-full z-50 py-4">
+         <div class="container mx-auto px-6 flex justify-between items-center"> <a href="#home" class="text-2xl font-bold font-['Pacifico'] text-white">Tanush</a>
+             <div class="hidden md:flex items-center space-x-8"> <a href="#home" class="active-nav-item text-sm font-medium hover:text-primary transition-colors">Home</a> <a href="#about" class="text-sm font-medium hover:text-primary transition-colors">About</a> <a href="#skills" class="text-sm font-medium hover:text-primary transition-colors">Skills</a> <a href="#projects" class="text-sm font-medium hover:text-primary transition-colors">Projects</a> <a href="#certifications" class="text-sm font-medium hover:text-primary transition-colors">Certifications</a> <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a> </div>
+             <div class="md:hidden flex items-center"> <button id="mobile-menu-button" class="w-8 h-8 flex items-center justify-center text-white"> <i class="ri-menu-line ri-lg"></i> </button> </div>
+         </div> <!-- Mobile Menu -->
+         <div id="mobile-menu" class="hidden md:hidden bg-[#1e293b] absolute top-full left-0 w-full border-t border-gray-800">
+             <div class="container mx-auto px-6 py-4 flex flex-col space-y-4"> <a href="#home" class="text-sm font-medium hover:text-primary transition-colors">Home</a> <a href="#about" class="text-sm font-medium hover:text-primary transition-colors">About</a> <a href="#skills" class="text-sm font-medium hover:text-primary transition-colors">Skills</a> <a href="#projects" class="text-sm font-medium hover:text-primary transition-colors">Projects</a> <a href="#certifications" class="text-sm font-medium hover:text-primary transition-colors">Certifications</a> <a href="#contact" class="text-sm font-medium hover:text-primary transition-colors">Contact</a> </div>
+         </div>
+     </nav> <!-- Hero Section -->
+     <section id="home" class="relative min-h-screen flex items-center hero-gradient overflow-hidden">
+         <!-- Animated shapes -->
+         <div class="shape w-96 h-96 top-1/4 left-1/4" style="animation-delay: 0s;"></div>
+         <div class="shape w-64 h-64 bottom-1/4 right-1/4" style="animation-delay: -5s;"></div>
+         <div class="shape w-80 h-80 top-1/3 right-1/3" style="animation-delay: -10s;"></div>
+         <div class="container mx-auto px-6 py-24 relative z-10">
+             <div class="max-w-3xl">
+                 <h1 class="text-4xl md:text-6xl font-bold mb-4"> Hi, I'm <span class="text-primary">Tanush</span> </h1>
+                 <div class="text-2xl md:text-4xl font-bold mb-6 text-white"> <span id="typed-text">A future cybersecurity expert and full-stack developer</span> <span class="typing-cursor"></span> </div>
+                 <p class="text-lg text-gray-300 mb-8 max-w-xl"> Passionate about building secure, scalable applications and exploring the fascinating world of cybersecurity. Currently focusing on expanding my knowledge in both offensive and defensive security techniques. </p>
+                 <div class="flex flex-wrap gap-4"> <a href="#projects" class="btn-primary px-8 py-3 !rounded-button whitespace-nowrap">View My Work</a> <a href="#contact" class="btn-outline px-8 py-3 !rounded-button whitespace-nowrap">Get In Touch</a> </div>
+             </div>
+         </div>
+         <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center"> <span class="text-sm text-gray-400 mb-2">Scroll Down</span> <i class="ri-arrow-down-line ri-lg text-primary animate-bounce"></i> </div>
+     </section> <!-- About Section -->
+     <section id="about" class="py-24 bg-[#0a1120]">
+         <div class="container mx-auto px-6">
+             <h2 class="section-title text-3xl font-bold mb-12">About Me</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                 <div>
+                     <div class="bg-[#1e293b] p-6 rounded-lg shadow-lg">
+                         <h3 class="text-xl font-semibold mb-4 text-primary">Who I Am</h3>
+                         <p class="text-gray-300 mb-4"> I'm a Class 11 PCM student with a passion for technology, particularly in the fields of cybersecurity and full-stack development. My journey began with simple HTML websites, but quickly evolved as I discovered the fascinating world of security. </p>
+                         <p class="text-gray-300 mb-4"> I believe that understanding both development and security creates a unique perspective that allows for building more robust and secure applications from the ground up. </p>
+                         <p class="text-gray-300"> My goal is to become a professional cybersecurity expert and developer who can bridge the gap between these two often-separated domains. </p>
+                     </div>
+                     <div class="mt-8 bg-[#1e293b] p-6 rounded-lg shadow-lg">
+                         <h3 class="text-xl font-semibold mb-4 text-primary">Education</h3>
+                         <div class="mb-4">
+                             <h4 class="font-medium">Class 11 PCM Student</h4>
+                             <p class="text-gray-400 text-sm">2025 - Present</p>
+                             <p class="text-gray-300 mt-2"> Currently studying Physics, Chemistry, and Mathematics, while pursuing my passion for computer science and cybersecurity through self-directed learning and online courses. </p>
+                         </div>
+                     </div>
+                 </div>
+                 <div>
+                     <div class="bg-[#1e293b] p-6 rounded-lg shadow-lg mb-8">
+                         <h3 class="text-xl font-semibold mb-4 text-primary">What I Do</h3>
+                         <ul class="space-y-4">
+                             <li class="flex items-start">
+                                 <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary"> <i class="ri-shield-keyhole-line"></i> </div>
+                                 <div>
+                                     <h4 class="font-medium">Cybersecurity</h4>
+                                     <p class="text-gray-300 text-sm">Exploring vulnerabilities, penetration testing, and security best practices to build more secure systems.</p>
+                                 </div>
+                             </li>
+                             <li class="flex items-start">
+                                 <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary"> <i class="ri-code-s-slash-line"></i> </div>
+                                 <div>
+                                     <h4 class="font-medium">Full-Stack Development</h4>
+                                     <p class="text-gray-300 text-sm">Building responsive, secure web applications with modern frameworks and best practices.</p>
+                                 </div>
+                             </li>
+                             <li class="flex items-start">
+                                 <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary"> <i class="ri-terminal-box-line"></i> </div>
+                                 <div>
+                                     <h4 class="font-medium">Scripting & Automation</h4>
+                                     <p class="text-gray-300 text-sm">Creating scripts and tools to automate security testing and development workflows.</p>
+                                 </div>
+                             </li>
+                             <li class="flex items-start">
+                                 <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary"> <i class="ri-server-line"></i> </div>
+                                 <div>
+                                     <h4 class="font-medium">Network Security</h4>
+                                     <p class="text-gray-300 text-sm">Understanding network protocols and security measures to protect systems from attacks.</p>
+                                 </div>
+                             </li>
+                         </ul>
+                     </div>
+                     <div class="bg-[#1e293b] p-6 rounded-lg shadow-lg">
+                         <h3 class="text-xl font-semibold mb-4 text-primary">Fun Fact</h3>
+                         <p class="text-gray-300 italic"> I started my coding journey at 13 when I built a "hacker-proof" password system for my personal diary. It wasn't actually secure at all, but it sparked my interest in both development and security! </p>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </section> <!-- Skills Section -->
+     <section id="skills" class="py-24">
+         <div class="container mx-auto px-6">
+             <h2 class="section-title text-3xl font-bold mb-12">My Skills</h2>
+             <div class="mb-12">
+                 <div class="flex flex-wrap gap-4 mb-8"> <button class="filter-btn active !rounded-button px-4 py-2 whitespace-nowrap" data-filter="all">All Skills</button> <button class="filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="programming">Programming</button> <button class="filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="cybersecurity">Cybersecurity</button> <button class="filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="web">Web Development</button> <button class="filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="tools">Tools & Technologies</button> </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <!-- Programming Languages -->
+                     <div class="card p-6 rounded-lg skill-category" data-category="programming">
+                         <h3 class="text-xl font-semibold mb-6 text-primary">Programming Languages</h3>
+                         <div class="space-y-6">
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Python</span> <span class="text-sm text-gray-400">Advanced</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 90%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">C/C++</span> <span class="text-sm text-gray-400">Basic</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 50%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Bash/Shell</span> <span class="text-sm text-gray-400">Intermediate</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 65%"></div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div> <!-- Cybersecurity -->
+                     <div class="card p-6 rounded-lg skill-category" data-category="cybersecurity">
+                         <h3 class="text-xl font-semibold mb-6 text-primary">Cybersecurity</h3>
+                         <div class="space-y-6">
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Network Security</span> <span class="text-sm text-gray-400">Intermediate</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 70%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Penetration Testing</span> <span class="text-sm text-gray-400">Basic</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 60%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Security Analysis</span> <span class="text-sm text-gray-400">Basic</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 50%"></div>
+                                 </div>
+                             </div>
+                          </div>
+                     </div> <!-- Web Development -->
+                     <div class="card p-6 rounded-lg skill-category" data-category="web">
+                         <h3 class="text-xl font-semibold mb-6 text-primary">Web Development</h3>
+                         <div class="space-y-6">
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">HTML</span> <span class="text-sm text-gray-400">Advanced</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 90%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">CSS</span> <span class="text-sm text-gray-400">Intermediate</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 70%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Java-Script</span> <span class="text-sm text-gray-400">Basic</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 50%"></div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div> <!-- Tools & Technologies -->
+                     <div class="card p-6 rounded-lg skill-category" data-category="tools">
+                         <h3 class="text-xl font-semibold mb-6 text-primary">Tools & Technologies</h3>
+                         <div class="space-y-6">
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Git & GitHub</span> <span class="text-sm text-gray-400">Advanced</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 85%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Linux</span> <span class="text-sm text-gray-400">Intermediate</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 75%"></div>
+                                 </div>
+                             </div>
+                             <div>
+                                 <div class="flex justify-between mb-2"> <span class="font-medium">Docker</span> <span class="text-sm text-gray-400">Basic</span> </div>
+                                 <div class="skill-bar">
+                                     <div class="skill-progress" style="width: 45%"></div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+             <div class="text-center mt-12">
+                 <p class="text-gray-300 mb-6"> I'm constantly learning and expanding my skill set. Currently focusing on: </p>
+                 <div class="flex flex-wrap justify-center gap-4"> <span class="bg-[#1e293b] px-4 py-2 rounded-full text-sm">Advanced Penetration Testing</span> <span class="bg-[#1e293b] px-4 py-2 rounded-full text-sm">Cloud Security</span> <span class="bg-[#1e293b] px-4 py-2 rounded-full text-sm">TypeScript</span> <span class="bg-[#1e293b] px-4 py-2 rounded-full text-sm">DevSecOps</span> </div>
+             </div>
+         </div>
+     </section> <!-- Projects Section -->
+     <section id="projects" class="py-24 bg-[#0a1120]">
+         <div class="container mx-auto px-6">
+             <h2 class="section-title text-3xl font-bold mb-12">My Projects</h2>
+             <div class="flex flex-wrap gap-4 mb-8"> <button class="project-filter-btn active !rounded-button px-4 py-2 whitespace-nowrap" data-filter="all">All Projects</button> <button class="project-filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="web">Web Development</button> <button class="project-filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="security">Security</button> <button class="project-filter-btn !rounded-button px-4 py-2 whitespace-nowrap" data-filter="automation">Automation</button> </div>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <!-- Project 1 -->
+                 <div class="card rounded-lg overflow-hidden project-item" data-category="security">
+                     <div class="h-48 bg-gray-700 relative overflow-hidden"> <img src="Images\01.jpg" alt="SecureNet Monitor" class="w-full h-full object-cover object-top">
+                         <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
+                         <div class="absolute bottom-4 left-4">
+                             <h3 class="text-xl font-bold">SecureNet Monitor</h3>
+                         </div>
+                     </div>
+                     <div class="p-6">
+                         <p class="text-gray-300 mb-4"> A network monitoring tool that detects and alerts on suspicious activities using machine learning algorithms to identify potential threats. </p>
+                         <div class="flex flex-wrap gap-2 mb-4"> <span class="project-tag">Python</span> <span class="project-tag">Machine Learning</span> <span class="project-tag">Network Security</span> </div>
+                         <div class="flex justify-between"> <a href="#" class="text-primary hover:text-primary/80 flex items-center gap-1 text-sm"> <i class="ri-github-fill"></i> View Code </a> <a href="#" class="text-primary hover:text-primary/80 flex items-center gap-1 text-sm"> <i class="ri-external-link-line"></i> Live Demo </a> </div>
+                     </div>
+                 </div> <!-- Project 2 -->
+                 <div class="card rounded-lg overflow-hidden project-item" data-category="web">
+                     <div class="h-48 bg-gray-700 relative overflow-hidden"> <img src="Images\02.jpg" alt="E-Commerce Platform" class="w-full h-full object-cover object-top">
+                         <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
+                         <div class="absolute bottom-4 left-4">
+                             <h3 class="text-xl font-bold">SecureShop</h3>
+                         </div>
+                     </div>
+                     <div class="p-6">
+                         <p class="text-gray-300 mb-4"> A secure e-commerce platform with robust authentication, encrypted transactions, and protection against common web vulnerabilities. </p>
+                         <div class="flex flex-wrap gap-2 mb-4"> <span class="project-tag">React</span> <span class="project-tag">Node.js</span> <span class="project-tag">MongoDB</span> <span class="project-tag">OAuth</span> </div>
+                         <div class="flex justify-between"> <a href="#" class="text-primary hover:text-primary/80 flex items-center gap-1 text-sm"> <i class="ri-github-fill"></i> View Code </a> <a href="#" class="text-primary hover:text-primary/80 flex items-center gap-1 text-sm"> <i class="ri-external-link-line"></i> Live Demo </a> </div>
+                     </div>
+                 </div> <!-- Project 3 -->
+                 <div class="card rounded-lg overflow-hidden project-item" data-category="automation">
+                     <div class="h-48 bg-gray-700 relative overflow-hidden"> <img src="Images\03.jpg" alt="TaskMaster Automation" class="w-full h-full object-cover object-top">
+                         <div class="absolute inset-0 bg-gradient-to-t from-[#0f172a] to-transparent"></div>
+                         <div class="absolute bottom-4 left-4">
+                             <h3 class="text-xl font-bold">TaskMaster Automation</h3>
+                         </div>
+                     </div>
+                     <div class="p-6">
+                         <p class="text-gray-300 mb-4"> A task automation framework that helps streamline repetitive security checks and development workflows with scheduled scans and reports. </p>
+                         <div class="flex flex-wrap gap-2 mb-4"> <span class="project-tag">Python</span> <span class="project-tag">Bash</span> <span class="project-tag">Cron</span> <span class="project-tag">API Integration</span> </div>
+                         <div class="flex justify-between"> <a href="#" class="text-primary hover:text-primary/80 flex items-center gap-1 text-sm"> <i class="ri-github-fill"></i> View Code </a> <a href="#" class="text-primary hover:text-primary/80 flex items-center gap-1 text-sm"> <i class="ri-external-link-line"></i> Live Demo </a> </div>
+                     </div>
+                 </div>
+                 <div class="text-center mt-12"> <a href="Projects.html" data-readdy="true" class="btn-outline px-8 py-3 !rounded-button whitespace-nowrap">View All Projects</a> </div>
+             </div>
+     </section> <!-- Certifications Section -->
+     <section id="certifications" class="py-24">
+         <div class="container mx-auto px-6">
+             <h2 class="section-title text-3xl font-bold mb-12">Certifications & Learning</h2>
+             <div class="max-w-3xl mx-auto">
+                 <div class="relative pl-8 border-l-2 border-gray-700 space-y-12">
+                     <!-- Certification 1 -->
+                     <div class="timeline-item relative pl-8">
+                         <div class="card p-6 rounded-lg">
+                             <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                <h3 class="text-xl font-semibold text-primary">Introduction to Cybersecurity</h3> <span class="text-sm text-gray-400">Cisco Networking Academy</span>
+                             </div>
+                             <p class="text-gray-300 mb-4"> Comprehensive introduction to the world of cybersecurity, covering fundamental concepts, threats, and defense mechanisms. </p>
+                             <div class="flex justify-between items-center"> <span class="text-sm text-gray-400">Completed: March 2024</span> <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center gap-1"> <i class="ri-external-link-line"></i> Verify </a> </div>
+                         </div>
+                     </div> <!-- Certification 2 -->
+                    <div class="timeline-item relative pl-8">
+                         <div class="card p-6 rounded-lg">
+                             <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                 <h3 class="text-xl font-semibold text-primary">JavaScript Algorithms and Data Structures</h3> <span class="text-sm text-gray-400">freeCodeCamp</span>
+                             </div>
+                             <p class="text-gray-300 mb-4"> Mastered JavaScript fundamentals, data structures, and algorithm design principles through practical projects. </p>
+                             <div class="flex justify-between items-center"> <span class="text-sm text-gray-400">Completed: January 2024</span> <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center gap-1"> <i class="ri-external-link-line"></i> Verify </a> </div>
+                         </div>
+                     </div> <!-- Certification 3 -->
+                     <div class="timeline-item relative pl-8">
+                         <div class="card p-6 rounded-lg">
+                             <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                 <h3 class="text-xl font-semibold text-primary">Python for Cybersecurity</h3> <span class="text-sm text-gray-400">Coursera</span>
+                             </div>
+                            <p class="text-gray-300 mb-4"> Applied Python programming to develop security tools, automate security tasks, and analyze security data. </p>
+                             <div class="flex justify-between items-center"> <span class="text-sm text-gray-400">Completed: November 2023</span> <a href="#" class="text-primary hover:text-primary/80 text-sm flex items-center gap-1"> <i class="ri-external-link-line"></i> Verify </a> </div>
+                         </div>
+                     </div> <!-- Currently Pursuing -->
+                     <div class="timeline-item relative pl-8">
+                         <div class="card p-6 rounded-lg border border-primary/30">
+                             <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+                                 <h3 class="text-xl font-semibold text-primary">Ethical Hacking Fundamentals</h3> <span class="text-sm text-gray-400">Udemy</span>
+                             </div>
+                             <p class="text-gray-300 mb-4"> Learning ethical hacking methodologies, penetration testing techniques, and responsible vulnerability disclosure. </p>
+                             <div class="flex justify-between items-center"> <span class="text-sm text-secondary">In Progress (60% Complete)</span>
+                                 <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                     <div class="h-full bg-secondary" style="width: 60%"></div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="text-center mt-12">
+                     <p class="text-gray-300 mb-6"> I believe in continuous learning and regularly take courses to expand my knowledge. </p> <a href="Roadmap.html" data-readdy="true" class="btn-outline px-8 py-3 !rounded-button whitespace-nowrap">View Learning Roadmap</a>
+                 </div>
+             </div>
+         </div>
+     </section> <!-- Contact Section -->
+     <section id="contact" class="py-24 bg-[#0a1120]">
+         <div class="container mx-auto px-6">
+             <h2 class="section-title text-3xl font-bold mb-12">Get In Touch</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                 <div>
+                     <div class="card p-6 rounded-lg mb-8">
+                         <h3 class="text-xl font-semibold mb-4 text-primary">Contact Information</h3>
+                         <div class="space-y-4">
+                             <div class="flex items-start">
+                                 <div class="w-10 h-10 flex items-center justify-center mr-4 bg-primary/10 rounded-full text-primary"> <i class="ri-mail-line"></i> </div>
+                                 <div>
+                                     <h4 class="font-medium">Email</h4>
+                                     <p class="text-gray-300 break-all">00tanush00@gmail.com</p> <button id="copy-email" class="text-xs text-primary mt-1 hover:text-primary/80">Copy to clipboard</button>
+                                 </div>
+                             </div>
+                             <div class="flex items-start">
+                                 <div class="w-10 h-10 flex items-center justify-center mr-4 bg-primary/10 rounded-full text-primary"> <i class="ri-map-pin-line"></i> </div>
+                                 <div>
+                                     <h4 class="font-medium">Location</h4>
+                                     <p class="text-gray-300">New Delhi, India</p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     <div class="card p-6 rounded-lg">
+                         <h3 class="text-xl font-semibold mb-4 text-primary">Connect With Me</h3>
+                         <div class="flex space-x-4"> <a href="#" class="w-10 h-10 flex items-center justify-center bg-[#1e293b] rounded-full text-gray-300 hover:text-primary social-icon"> <i class="ri-github-fill"></i> </a> <a href="#" class="w-10 h-10 flex items-center justify-center bg-[#1e293b] rounded-full text-gray-300 hover:text-primary social-icon"> <i class="ri-linkedin-fill"></i> </a> <a href="#" class="w-10 h-10 flex items-center justify-center bg-[#1e293b] rounded-full text-gray-300 hover:text-primary social-icon"> <i class="ri-youtube-fill"></i> </a> <a href="#" class="w-10 h-10 flex items-center justify-center bg-[#1e293b] rounded-full text-gray-300 hover:text-primary social-icon"> <i class="ri-instagram-fill"></i> </a> </div>
+                         <p class="text-gray-300 mt-6"> I'm always open to discussing new projects, opportunities, or partnerships. Feel free to reach out! </p>
+                     </div>
+                 </div>
+                 <div>
+                     <form id="contact-form" class="card p-6 rounded-lg">
+                         <h3 class="text-xl font-semibold mb-6 text-primary">Send Me a Message</h3>
+                         <div class="space-y-6">
+                             <div> <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Your Name</label> <input type="text" id="name" name="name" class="form-input w-full px-4 py-3 rounded-lg" placeholder="John Doe" required> </div>
+                             <div> <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Your Email</label> <input type="email" id="email" name="email" class="form-input w-full px-4 py-3 rounded-lg" placeholder="john@example.com" required> </div>
+                             <div> <label for="subject" class="block text-sm font-medium text-gray-300 mb-2">Subject</label> <input type="text" id="subject" name="subject" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Project Inquiry" required> </div>
+                             <div> <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label> <textarea id="message" name="message" rows="5" class="form-input w-full px-4 py-3 rounded-lg" placeholder="Your message here..." required></textarea> </div>
+                             <div> <label class="custom-checkbox"> <input type="checkbox" required> <span class="checkmark"></span> I agree to the processing of my data for the purpose of contact </label> </div> <button type="submit" class="btn-primary w-full py-3 !rounded-button whitespace-nowrap">Send Message</button>
+                         </div>
+                     </form>
+                 </div>
+             </div>
+         </div>
+     </section> <!-- Footer -->
+     <footer class="py-12 bg-[#0f172a] border-t border-gray-800">
+         <div class="container mx-auto px-6">
+             <div class="flex flex-col md:flex-row justify-between items-center">
+                 <div class="mb-6 md:mb-0"> <a href="#home" class="text-2xl font-bold font-['Pacifico'] text-white">Tanush</a>
+                     <p class="text-gray-400 mt-2">Cybersecurity & Full-Stack Development</p>
+                 </div>
+                 <div class="flex flex-col items-center md:items-end">
+                     <div class="flex space-x-4 mb-4"> <a href="#" class="text-gray-400 hover:text-primary"> <i class="ri-github-fill ri-lg"></i> </a> <a href="#" class="text-gray-400 hover:text-primary"> <i class="ri-linkedin-fill ri-lg"></i> </a> <a href="#" class="text-gray-400 hover:text-primary"> <i class="ri-youtube-fill ri-lg"></i> </a> <a href="#" class="text-gray-400 hover:text-primary"> <i class="ri-instagram-fill ri-lg"></i> </a> </div>
+                     <p class="text-gray-500 text-sm">© 2025 Tanush. All rights reserved.</p>
+                 </div>
+             </div>
+             <div class="mt-8 text-center"> <a href="#home" class="inline-flex items-center text-gray-400 hover:text-primary"> <i class="ri-arrow-up-line mr-2"></i> Back to top </a> </div>
+         </div>
+     </footer> <!-- Mobile Menu Toggle Script -->
+     <script id="mobile-menu-script">
+         document.addEventListener('DOMContentLoaded', function() {
+         const mobileMenuButton = document.getElementById('mobile-menu-button');
+         const mobileMenu = document.getElementById('mobile-menu');
+         mobileMenuButton.addEventListener('click', function() {
+         mobileMenu.classList.toggle('hidden');
+         // Change icon based on menu state
+         const icon = mobileMenuButton.querySelector('i');
+         if (mobileMenu.classList.contains('hidden')) {
+         icon.classList.remove('ri-close-line');
+         icon.classList.add('ri-menu-line');
+         } else {
+         icon.classList.remove('ri-menu-line');
+         icon.classList.add('ri-close-line');
+         }
+         });
+         // Close mobile menu when clicking on a link
+         const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+         mobileMenuLinks.forEach(link => {
+         link.addEventListener('click', function() {
+         mobileMenu.classList.add('hidden');
+         const icon = mobileMenuButton.querySelector('i');
+         icon.classList.remove('ri-close-line');
+         icon.classList.add('ri-menu-line');
+         });
+         });
+         });
+     </script> <!-- Smooth Scroll & Active Navigation Script -->
+     <script id="navigation-script">
+         document.addEventListener('DOMContentLoaded', function() {
+         // Get all sections
+         const sections = document.querySelectorAll('section');
+         const navLinks = document.querySelectorAll('nav a');
+         // Add smooth scroll to all navigation links
+         navLinks.forEach(link => {
+         link.addEventListener('click', function(e) {
+         e.preventDefault();
+         const targetId = this.getAttribute('href');
+         const targetSection = document.querySelector(targetId);
+         window.scrollTo({
+         top: targetSection.offsetTop - 80, // Adjust for fixed header
+         behavior: 'smooth'
+         });
+         });
+         });
+         // Update active navigation item on scroll
+         window.addEventListener('scroll', function() {
+         let current = '';
+         sections.forEach(section => {
+         const sectionTop = section.offsetTop;
+         const sectionHeight = section.clientHeight;
+         if (pageYOffset >= sectionTop - 200) {
+         current = section.getAttribute('id');
+         }
+         });
+         navLinks.forEach(link => {
+         link.classList.remove('active-nav-item');
+         if (link.getAttribute('href') === `#${current}`) {
+         link.classList.add('active-nav-item');
+         }
+         });
+         });
+         });
+     </script> <!-- Copy Email to Clipboard Script -->
+     <script id="copy-email-script">
+         document.addEventListener('DOMContentLoaded', function() {
+         const copyEmailButton = document.getElementById('copy-email');
+         copyEmailButton.addEventListener('click', function() {
+         const email = '00tanush00@gmail.com';
+         navigator.clipboard.writeText(email).then(function() {
+         const originalText = copyEmailButton.textContent;
+         copyEmailButton.textContent = 'Copied!';
+         setTimeout(function() {
+         copyEmailButton.textContent = originalText;
+         }, 2000);
+         });
+         });
+         });
+     </script> <!-- Skills Filter Script -->
+     <script id="skills-filter-script">
+         document.addEventListener('DOMContentLoaded', function() {
+         const filterButtons = document.querySelectorAll('.filter-btn');
+         const skillCategories = document.querySelectorAll('.skill-category');
+         filterButtons.forEach(button => {
+         button.addEventListener('click', function() {
+         // Remove active class from all buttons
+         filterButtons.forEach(btn => btn.classList.remove('active'));
+         // Add active class to clicked button
+         this.classList.add('active');
+         // Get filter value
+         const filter = this.getAttribute('data-filter');
+         // Show/hide skill categories based on filter
+         skillCategories.forEach(category => {
+         if (filter === 'all' || category.getAttribute('data-category') === filter) {
+         category.style.display = 'block';
+         } else {
+         category.style.display = 'none';
+         }
+         });
+         });
+         });
+         });
+     </script> <!-- Projects Filter Script -->
+     <script id="projects-filter-script">
+         document.addEventListener('DOMContentLoaded', function() {
+         const filterButtons = document.querySelectorAll('.project-filter-btn');
+         const projectItems = document.querySelectorAll('.project-item');
+         filterButtons.forEach(button => {
+         button.addEventListener('click', function() {
+         // Remove active class from all buttons
+         filterButtons.forEach(btn => btn.classList.remove('active'));
+         // Add active class to clicked button
+         this.classList.add('active');
+         // Get filter value
+         const filter = this.getAttribute('data-filter');
+         // Show/hide projects based on filter
+         projectItems.forEach(item => {
+         if (filter === 'all' || item.getAttribute('data-category') === filter) {
+         item.style.display = 'block';
+         } else {
+         item.style.display = 'none';
+         }
+         });
+         });
+         });
+         });
+     </script> <!-- Contact Form Script -->
+     <script id="contact-form-script">
+         document.addEventListener('DOMContentLoaded', function() {
+         const contactForm = document.getElementById('contact-form');
+         contactForm.addEventListener('submit', function(e) {
+         e.preventDefault();
+         // Get form data
+         const formData = new FormData(contactForm);
+         const formDataObject = {};
+         formData.forEach((value, key) => {
+         formDataObject[key] = value;
+         });
+         // Simulate form submission
+         console.log('Form submitted:', formDataObject);
+          // Show success message (in a real application, you would send the data to a server)
+         alert('Thank you for your message! I will get back to you soon.');
+         // Reset form
+         contactForm.reset();
+         });
+         });
+     </script>
+     <script>// Skill filtering (Portfolio.html)
+       document.querySelectorAll('.filter-btn').forEach(btn => {
+         btn.addEventListener('click', () => {
+          const category = btn.dataset.filter;
+          document.querySelectorAll('.skill-category').forEach(card => {
+           card.style.display = (category === 'all' || card.dataset.category === category) ? 'block' : 'none';
+          });
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+         });
+       });
+     </script>
+
+ </body>
+</html>
