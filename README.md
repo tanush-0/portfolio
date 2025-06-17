@@ -4,6 +4,7 @@ Welcome to my personal portfolio website! This site showcases my journey as a Cl
 
 ## 📁 Project Structure
 
+````text
 tanush-0/
 ├── index.html             # 🏠 Main homepage of the portfolio
 ├── Projects.html          # 💼 Complete showcase of development and cybersecurity projects
