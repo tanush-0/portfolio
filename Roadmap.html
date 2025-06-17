@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tanush - Learning Roadmap</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#00A3FF',secondary:'#00E088'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+:root {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --accent-primary: #00A3FF;
+  --accent-secondary: #00E088;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+.glass-nav {
+  backdrop-filter: blur(10px);
+  background-color: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.card {
+  background-color: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 163, 255, 0.3);
+}
+.timeline-connector {
+  position: absolute;
+  top: 24px;
+  bottom: -24px;
+  left: 16px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary));
+  z-index: 0;
+}
+.timeline-dot {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  z-index: 1;
+}
+.timeline-dot.completed {
+  background-color: #10b981;
+}
+.timeline-dot.in-progress {
+  background-color: var(--accent-primary);
+}
+.timeline-dot.future {
+  background-color: #6b7280;
+}
+.progress-ring-container {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+.progress-ring-bg {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 4;
+}
+.progress-ring {
+  fill: none;
+  stroke-linecap: round;
+  stroke-width: 4;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.3s ease;
+}
+.progress-ring.completed {
+  stroke: #10b981;
+}
+.progress-ring.in-progress {
+  stroke: var(--accent-primary);
+}
+.progress-ring.future {
+  stroke: #6b7280;
+}
+.progress-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 14px;
+  font-weight: 600;
+}
+.custom-switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 24px;
+}
+.custom-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.switch-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: .4s;
+  border-radius: 24px;
+}
+.switch-slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .switch-slider {
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+}
+input:checked + .switch-slider:before {
+  transform: translateX(24px);
+}
+.category-tab {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.category-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  border-radius: 1px;
+}
+.filter-badge {
+  background-color: rgba(0, 163, 255, 0.1);
+  color: var(--accent-primary);
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+.search-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+.search-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 2px rgba(0, 163, 255, 0.2);
+  outline: none;
+}
+.difficulty-badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+.difficulty-badge.beginner {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+}
+.difficulty-badge.intermediate {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+.difficulty-badge.advanced {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}
+.difficulty-badge.expert {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: #8b5cf6;
+}
+.resource-link {
+  transition: all 0.3s ease;
+}
+.resource-link:hover {
+  color: var(--accent-primary);
+  transform: translateX(4px);
+}
+.breadcrumb-item {
+  position: relative;
+  padding-right: 24px;
+}
+.breadcrumb-item:not(:last-child)::after {
+  content: '/';
+  position: absolute;
+  right: 8px;
+  color: #6b7280;
+}
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-pulse-slow {
+  animation: pulseSlow 3s infinite;
+}
+@keyframes pulseSlow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="glass-nav fixed top-0 left-0 w-full z-50 py-4">
+  <div class="container mx-auto px-6 flex justify-between items-center">
+    <a href="index.html" data-readdy="true" class="mt-4 md:mt-0 flex items-center text-gray-300 hover:text-primary transition-all">
+        <i class="ri-arrow-left-line mr-2"></i> Back to Portfolio
+    </a>
+    <div class="hidden md:flex items-center space-x-8">
+      <a href="index.html" class="text-2xl font-bold font-['Pacifico'] text-white">Tanush</a>
+    </div>
+    <div class="md:hidden flex items-center">
+      <a href="index.html" class="text-2xl font-bold font-['Pacifico'] text-white">Tanush</a>
+    </div>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="hidden md:hidden bg-[#1e293b] absolute top-full left-0 w-full border-t border-gray-800">
+    <a href="index.html" data-readdy="true" class="mt-4 md:mt-0 flex items-center text-gray-300 hover:text-primary transition-all">
+        <i class="ri-arrow-left-line mr-2"></i> Back to Portfolio
+    </a>
+    <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+      <a href="index.html" class="text-2xl font-bold font-['Pacifico'] text-white">Tanush</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Header Section -->
+<section class="pt-32 pb-12">
+  <div class="container mx-auto px-6">
+    <div class="flex items-center space-x-2 text-sm text-gray-400 mb-6">
+      <a href="index.html" data-readdy="true" class="breadcrumb-item hover:text-primary">Home</a>
+      <span class="breadcrumb-item text-primary">Learning Roadmap</span>
+    </div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
+      <div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 animate-fade-in">My Learning Roadmap</h1>
+        <p class="text-gray-300 max-w-2xl animate-fade-in" style="animation-delay: 0.1s;">
+          A structured plan for my educational journey in cybersecurity and development. This roadmap outlines my completed certifications, current courses, and future learning goals.
+        </p>
+      </div>
+      
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+      <div class="card p-6 rounded-lg animate-fade-in" style="animation-delay: 0.2s;">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+            <i class="ri-target-line ri-lg"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Today's Goal</h3>
+        </div>
+        <p class="text-gray-300">Complete Module 3 of Ethical Hacking Fundamentals course and review notes from Python for Cybersecurity.</p>
+        <div class="mt-4 flex justify-between items-center">
+          <span class="text-sm text-gray-400">May 28, 2025</span>
+          <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full">In Progress</span>
+        </div>
+      </div>
+      
+      <div class="card p-6 rounded-lg animate-fade-in" style="animation-delay: 0.3s;">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+            <i class="ri-bar-chart-line ri-lg"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Progress Overview</h3>
+        </div>
+        <div class="flex justify-between items-center">
+          <div>
+            <p class="text-gray-300">Overall Completion</p>
+            <p class="text-2xl font-bold">42%</p>
+          </div>
+          <div id="progress-chart" class="w-20 h-20"></div>
+        </div>
+        <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+          <div>
+            <p class="text-xs text-gray-400">Completed</p>
+            <p class="font-semibold text-green-500">7</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-400">In Progress</p>
+            <p class="font-semibold text-primary">3</p>
+          </div>
+          <div>
+            <p class="text-xs text-gray-400">Planned</p>
+            <p class="font-semibold text-gray-400">12</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card p-6 rounded-lg animate-fade-in" style="animation-delay: 0.4s;">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+            <i class="ri-lightbulb-line ri-lg"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Learning Quote</h3>
+        </div>
+        <p class="text-gray-300 italic">
+          "The beautiful thing about learning is that nobody can take it away from you."
+        </p>
+        <p class="text-right text-sm text-gray-400 mt-2">— B.B. King</p>
+        <div class="mt-4 text-right">
+          <button id="refresh-quote" class="text-primary hover:text-primary/80 text-sm flex items-center gap-1 ml-auto">
+            <i class="ri-refresh-line"></i> New Quote
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+      <div class="flex flex-wrap gap-4">
+        <button class="category-tab active px-4 py-2 text-primary font-medium" data-category="all">
+          All <span class="ml-1 filter-badge">22</span>
+        </button>
+        <button class="category-tab px-4 py-2 text-gray-300 font-medium" data-category="cybersecurity">
+          Cybersecurity <span class="ml-1 filter-badge">10</span>
+        </button>
+        <button class="category-tab px-4 py-2 text-gray-300 font-medium" data-category="development">
+          Development <span class="ml-1 filter-badge">8</span>
+        </button>
+        <button class="category-tab px-4 py-2 text-gray-300 font-medium" data-category="tools">
+          Tools <span class="ml-1 filter-badge">4</span>
+        </button>
+      </div>
+      <div class="w-full md:w-auto relative">
+        <input type="text" placeholder="Search courses..." class="search-input w-full md:w-64 px-4 py-2 pl-10 rounded-lg">
+        <i class="ri-search-line absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+      </div>
+    </div>
+    
+    <div class="flex flex-wrap gap-4 mb-8">
+      <div class="flex items-center">
+        <span class="w-3 h-3 rounded-full bg-green-500 mr-2"></span>
+        <span class="text-sm text-gray-300">Completed</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-3 h-3 rounded-full bg-primary mr-2"></span>
+        <span class="text-sm text-gray-300">In Progress</span>
+      </div>
+      <div class="flex items-center">
+        <span class="w-3 h-3 rounded-full bg-gray-500 mr-2"></span>
+        <span class="text-sm text-gray-300">Planned</span>
+      </div>
+      <div class="ml-auto">
+        <label class="custom-switch">
+          <input type="checkbox" id="toggle-details">
+          <span class="switch-slider"></span>
+        </label>
+        <span class="text-sm text-gray-300 ml-2">Show Details</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cybersecurity Section -->
+<section class="py-8" id="cybersecurity-section">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold mb-8 flex items-center">
+      <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+        <i class="ri-shield-keyhole-line"></i>
+      </div>
+      Cybersecurity Path
+    </h2>
+    
+    <div class="relative pl-8 space-y-8">
+      <!-- Completed Course 1 -->
+      <div class="relative">
+        <div class="timeline-dot completed"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-green-500">Introduction to Cybersecurity</h3>
+            <span class="difficulty-badge beginner">Beginner</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Comprehensive introduction to the world of cybersecurity, covering fundamental concepts, threats, and defense mechanisms.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Cisco Networking Academy</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 40 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Completed: March 2024</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring completed" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="progress-text text-green-500">100%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Cybersecurity principles and concepts</li>
+                <li>Common threats and vulnerabilities</li>
+                <li>Basic security controls and defenses</li>
+                <li>Security policies and compliance</li>
+                <li>Career paths in cybersecurity</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-file-text-line mr-2"></i> Course Certificate
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-github-line mr-2"></i> My Course Projects
+                  </a>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Personal Notes:</h4>
+                <div class="bg-gray-800 p-3 rounded-lg text-sm text-gray-300">
+                  This course provided a solid foundation in cybersecurity concepts. The hands-on labs were particularly helpful in understanding network security basics. I found the threat modeling exercises most valuable for my future studies.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Completed Course 2 -->
+      <div class="relative">
+        <div class="timeline-dot completed"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-green-500">Network Security Fundamentals</h3>
+            <span class="difficulty-badge beginner">Beginner</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Understanding network protocols, firewalls, VPNs, and intrusion detection systems to secure network infrastructure.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> CompTIA</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 35 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Completed: January 2024</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring completed" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="progress-text text-green-500">100%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>TCP/IP protocol suite and security implications</li>
+                <li>Firewall configuration and management</li>
+                <li>VPN implementation and security</li>
+                <li>Intrusion detection and prevention systems</li>
+                <li>Network traffic analysis</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-file-text-line mr-2"></i> Course Certificate
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-github-line mr-2"></i> Network Analysis Project
+                  </a>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Personal Notes:</h4>
+                <div class="bg-gray-800 p-3 rounded-lg text-sm text-gray-300">
+                  The practical exercises with Wireshark were extremely valuable. I learned how to identify suspicious network traffic patterns and understand common attack signatures. The firewall configuration labs helped me understand defense-in-depth principles.
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- In Progress Course -->
+      <div class="relative">
+        <div class="timeline-dot in-progress"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10 border border-primary/30">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-primary">Ethical Hacking Fundamentals</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Learning ethical hacking methodologies, penetration testing techniques, and responsible vulnerability disclosure.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Udemy</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 60 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Expected: July 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring in-progress" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="65.34"></circle>
+                </svg>
+                <div class="progress-text text-primary">60%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Reconnaissance and information gathering</li>
+                <li>Scanning and enumeration techniques</li>
+                <li>Vulnerability assessment</li>
+                <li>Exploitation basics</li>
+                <li>Post-exploitation and reporting</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Current Progress:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 1: Introduction to Ethical Hacking</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 2: Reconnaissance Techniques</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 3: Scanning Networks (In Progress)</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 4: Enumeration</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 5: Vulnerability Analysis</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-github-line mr-2"></i> Practice Lab Environment
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> Study Notes
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Future Course 1 -->
+      <div class="relative">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-gray-300">Web Application Security</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Understanding OWASP Top 10 vulnerabilities, secure coding practices, and web application penetration testing.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Portswigger Academy</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 50 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Planned: August 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring future" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36"></circle>
+                </svg>
+                <div class="progress-text text-gray-400">0%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics to Cover:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>OWASP Top 10 vulnerabilities</li>
+                <li>SQL injection and prevention</li>
+                <li>Cross-site scripting (XSS) attacks</li>
+                <li>Cross-site request forgery (CSRF)</li>
+                <li>Authentication and session management</li>
+                <li>API security</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Prerequisites:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Introduction to Cybersecurity</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Ethical Hacking Fundamentals</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> OWASP Documentation
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Future Course 2 -->
+      <div class="relative">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-gray-300">Cloud Security Fundamentals</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Learning cloud security principles, securing cloud infrastructure, and understanding shared responsibility models.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> AWS Training</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 45 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Planned: October 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring future" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36"></circle>
+                </svg>
+                <div class="progress-text text-gray-400">0%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics to Cover:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Cloud service models (IaaS, PaaS, SaaS)</li>
+                <li>Shared responsibility model</li>
+                <li>Identity and access management in the cloud</li>
+                <li>Data protection and encryption</li>
+                <li>Network security in cloud environments</li>
+                <li>Compliance and governance</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Prerequisites:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Network Security Fundamentals</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Basic Cloud Computing Knowledge</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> AWS Security Documentation
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> Cloud Security Alliance Resources
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Development Section -->
+<section class="py-8" id="development-section">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold mb-8 flex items-center">
+      <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+        <i class="ri-code-s-slash-line"></i>
+      </div>
+      Development Path
+    </h2>
+    
+    <div class="relative pl-8 space-y-8">
+      <!-- Completed Course 1 -->
+      <div class="relative">
+        <div class="timeline-dot completed"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-green-500">JavaScript Algorithms and Data Structures</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Mastered JavaScript fundamentals, data structures, and algorithm design principles through practical projects.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> freeCodeCamp</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 300 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Completed: January 2024</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring completed" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="progress-text text-green-500">100%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>JavaScript fundamentals and ES6+ features</li>
+                <li>Basic data structures (arrays, objects, maps, sets)</li>
+                <li>Advanced data structures (linked lists, trees, graphs)</li>
+                <li>Algorithm design and problem-solving</li>
+                <li>Functional programming concepts</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Projects Completed:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Palindrome Checker</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Roman Numeral Converter</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Caesars Cipher</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Telephone Number Validator</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Cash Register</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-file-text-line mr-2"></i> Course Certificate
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-github-line mr-2"></i> Project Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Completed Course 2 -->
+      <div class="relative">
+        <div class="timeline-dot completed"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-green-500">Python for Cybersecurity</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Applied Python programming to develop security tools, automate security tasks, and analyze security data.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Coursera</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 40 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Completed: November 2023</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring completed" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="progress-text text-green-500">100%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Python fundamentals for security professionals</li>
+                <li>Network scanning and reconnaissance tools</li>
+                <li>Log analysis and data parsing</li>
+                <li>Automation of security tasks</li>
+                <li>Building custom security tools</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Projects Completed:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Port Scanner Tool</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Log Analysis Script</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Password Strength Checker</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-file-text-line mr-2"></i> Course Certificate
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-github-line mr-2"></i> Project Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- In Progress Course -->
+      <div class="relative">
+        <div class="timeline-dot in-progress"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10 border border-primary/30">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-primary">React.js for Secure Applications</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Building modern web applications with React.js while implementing security best practices and secure authentication.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Udemy</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 50 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Expected: June 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring in-progress" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="81.68"></circle>
+                </svg>
+                <div class="progress-text text-primary">50%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>React.js fundamentals and hooks</li>
+                <li>Secure state management</li>
+                <li>Authentication and authorization</li>
+                <li>Secure API integration</li>
+                <li>Input validation and sanitization</li>
+                <li>Security testing for React applications</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Current Progress:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 1: React Fundamentals</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 2: Component Architecture</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 3: Authentication (In Progress)</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 4: Secure State Management</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 5: Security Best Practices</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-github-line mr-2"></i> Project Repository
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Future Course -->
+      <div class="relative">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-gray-300">Node.js Security and Best Practices</h3>
+            <span class="difficulty-badge advanced">Advanced</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Developing secure Node.js applications, understanding common vulnerabilities, and implementing security best practices.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Pluralsight</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 40 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Planned: September 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring future" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36"></circle>
+                </svg>
+                <div class="progress-text text-gray-400">0%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics to Cover:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Node.js security fundamentals</li>
+                <li>Common vulnerabilities in Node.js applications</li>
+                <li>Secure authentication and authorization</li>
+                <li>Input validation and sanitization</li>
+                <li>Secure API design</li>
+                <li>Dependency management and security</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Prerequisites:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">JavaScript Algorithms and Data Structures</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">React.js for Secure Applications</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> Node.js Security Checklist
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tools Section -->
+<section class="py-8" id="tools-section">
+  <div class="container mx-auto px-6">
+    <h2 class="text-2xl font-bold mb-8 flex items-center">
+      <div class="w-8 h-8 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+        <i class="ri-tools-line"></i>
+      </div>
+      Tools & Technologies
+    </h2>
+    
+    <div class="relative pl-8 space-y-8">
+      <!-- Completed Course -->
+      <div class="relative">
+        <div class="timeline-dot completed"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-green-500">Git & GitHub for Version Control</h3>
+            <span class="difficulty-badge beginner">Beginner</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Mastering version control with Git and GitHub for collaborative development and code management.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> GitHub Learning Lab</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 15 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Completed: October 2023</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring completed" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="0"></circle>
+                </svg>
+                <div class="progress-text text-green-500">100%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Git fundamentals (init, add, commit, push, pull)</li>
+                <li>Branching and merging strategies</li>
+                <li>Pull requests and code reviews</li>
+                <li>Resolving merge conflicts</li>
+                <li>GitHub Actions for CI/CD</li>
+                <li>GitHub security features</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-file-text-line mr-2"></i> Course Certificate
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> GitHub Learning Lab
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> Git Cheat Sheet
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- In Progress Course -->
+      <div class="relative">
+        <div class="timeline-dot in-progress"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10 border border-primary/30">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-primary">Docker for Security Professionals</h3>
+            <span class="difficulty-badge intermediate">Intermediate</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Learning containerization with Docker, focusing on secure container deployment and security best practices.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Linux Academy</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 30 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Expected: August 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring in-progress" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="114.35"></circle>
+                </svg>
+                <div class="progress-text text-primary">30%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics Covered:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Docker fundamentals</li>
+                <li>Container security best practices</li>
+                <li>Securing Docker images</li>
+                <li>Docker Compose for multi-container applications</li>
+                <li>Container orchestration security</li>
+                <li>Vulnerability scanning for containers</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Current Progress:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-green-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 1: Docker Basics</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 2: Working with Containers (In Progress)</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 3: Docker Compose</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Module 4: Container Security</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Course Website
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> Docker Security Documentation
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Future Course -->
+      <div class="relative">
+        <div class="timeline-dot future"></div>
+        <div class="timeline-connector"></div>
+        <div class="card p-6 rounded-lg ml-10">
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <h3 class="text-xl font-semibold text-gray-300">Kubernetes for Secure Deployments</h3>
+            <span class="difficulty-badge advanced">Advanced</span>
+          </div>
+          <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4">
+            <div>
+              <p class="text-gray-300 mb-2">
+                Learning container orchestration with Kubernetes, focusing on secure deployment patterns and best practices.
+              </p>
+              <div class="flex items-center text-sm text-gray-400">
+                <span class="flex items-center mr-4"><i class="ri-building-line mr-1"></i> Kubernetes Academy</span>
+                <span class="flex items-center mr-4"><i class="ri-time-line mr-1"></i> 50 hours</span>
+                <span class="flex items-center"><i class="ri-calendar-check-line mr-1"></i> Planned: December 2025</span>
+              </div>
+            </div>
+            <div class="mt-4 md:mt-0">
+              <div class="progress-ring-container">
+                <svg width="60" height="60" viewBox="0 0 60 60">
+                  <circle class="progress-ring-bg" cx="30" cy="30" r="26"></circle>
+                  <circle class="progress-ring future" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36"></circle>
+                </svg>
+                <div class="progress-text text-gray-400">0%</div>
+              </div>
+            </div>
+          </div>
+          <div class="hidden details-content">
+            <div class="border-t border-gray-700 pt-4 mt-4">
+              <h4 class="font-medium mb-2">Key Topics to Cover:</h4>
+              <ul class="text-gray-300 text-sm space-y-1 ml-5 list-disc">
+                <li>Kubernetes architecture and components</li>
+                <li>Pod security policies</li>
+                <li>Network policies and security</li>
+                <li>Role-based access control (RBAC)</li>
+                <li>Secrets management</li>
+                <li>Security scanning in CI/CD pipelines</li>
+              </ul>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Prerequisites:</h4>
+                <div class="space-y-2">
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-primary mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Docker for Security Professionals</span>
+                  </div>
+                  <div class="flex items-center">
+                    <div class="w-4 h-4 rounded-full bg-gray-500 mr-2 flex-shrink-0"></div>
+                    <span class="text-sm text-gray-300">Linux Administration Basics</span>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <h4 class="font-medium mb-2">Resources:</h4>
+                <div class="space-y-2">
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-link-m mr-2"></i> Kubernetes Documentation
+                  </a>
+                  <a href="#" class="resource-link flex items-center text-sm text-gray-300">
+                    <i class="ri-book-2-line mr-2"></i> Kubernetes Security Best Practices
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end mt-4">
+            <button class="toggle-details-btn text-primary hover:text-primary/80 text-sm flex items-center">
+              <span>Show Details</span>
+              <i class="ri-arrow-down-s-line ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Actions Section -->
+<section class="py-12 bg-[#0a1120]">
+  <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="card p-6 rounded-lg">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+            <i class="ri-download-line ri-lg"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Export Roadmap</h3>
+        </div>
+        <p class="text-gray-300 mb-4">Download your learning roadmap in different formats for offline reference or sharing.</p>
+        <div class="flex flex-wrap gap-2">
+          <button class="bg-[#1e293b] hover:bg-[#2d3748] text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center">
+            <i class="ri-file-pdf-line mr-2"></i> PDF
+          </button>
+          <button class="bg-[#1e293b] hover:bg-[#2d3748] text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center">
+            <i class="ri-markdown-line mr-2"></i> Markdown
+          </button>
+          <button class="bg-[#1e293b] hover:bg-[#2d3748] text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center">
+            <i class="ri-image-line mr-2"></i> Image
+          </button>
+        </div>
+      </div>
+      
+      <div class="card p-6 rounded-lg">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+            <i class="ri-share-line ri-lg"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Share Progress</h3>
+        </div>
+        <p class="text-gray-300 mb-4">Share your learning journey with friends, mentors, or potential employers.</p>
+        <div class="flex flex-wrap gap-2">
+          <button class="bg-[#1e293b] hover:bg-[#2d3748] text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center">
+            <i class="ri-linkedin-fill mr-2"></i> LinkedIn
+          </button>
+          <button class="bg-[#1e293b] hover:bg-[#2d3748] text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center">
+            <i class="ri-twitter-x-fill mr-2"></i> Twitter
+          </button>
+          <button class="bg-[#1e293b] hover:bg-[#2d3748] text-gray-300 px-4 py-2 rounded-lg text-sm flex items-center">
+            <i class="ri-link-m mr-2"></i> Copy Link
+          </button>
+        </div>
+      </div>
+      
+      <div class="card p-6 rounded-lg">
+        <div class="flex items-center mb-4">
+          <div class="w-10 h-10 flex items-center justify-center mr-3 bg-primary/10 rounded-full text-primary">
+            <i class="ri-edit-line ri-lg"></i>
+          </div>
+          <h3 class="text-lg font-semibold">Add Notes</h3>
+        </div>
+        <p class="text-gray-300 mb-4">Keep track of your thoughts, challenges, and insights as you progress through your learning journey.</p>
+        <div class="relative">
+          <textarea placeholder="Add your notes here..." class="search-input w-full px-4 py-2 rounded-lg h-24 resize-none"></textarea>
+          <button class="absolute bottom-2 right-2 bg-primary hover:bg-primary/90 text-white px-3 py-1 rounded-lg text-sm">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 bg-[#0f172a] border-t border-gray-800">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-6 md:mb-0">
+        <a href="index.html
+      " class="text-2xl font-bold font-['Pacifico'] text-white">Tanush</a>
+        <p class="text-gray-400 mt-2">Cybersecurity & Full-Stack Development</p>
+      </div>
+      <div class="flex flex-col items-center md:items-end">
+        <div class="flex space-x-4 mb-4">
+          <a href="#" class="text-gray-400 hover:text-primary">
+            <i class="ri-github-fill ri-lg"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary">
+            <i class="ri-linkedin-fill ri-lg"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary">
+            <i class="ri-twitter-x-fill ri-lg"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-primary">
+            <i class="ri-discord-fill ri-lg"></i>
+          </a>
+        </div>
+        <p class="text-gray-500 text-sm">© 2025 Tanush. All rights reserved.</p>
+      </div>
+    </div>
+    <div class="mt-8 text-center">
+      <a href="#" class="inline-flex items-center text-gray-400 hover:text-primary">
+        <i class="ri-arrow-up-line mr-2"></i> Back to top
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile Menu Toggle Script -->
+<script id="mobile-menu-script">
+document.addEventListener('DOMContentLoaded', function() {
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  mobileMenuButton.addEventListener('click', function() {
+    mobileMenu.classList.toggle('hidden');
+    // Change icon based on menu state
+    const icon = mobileMenuButton.querySelector('i');
+    if (mobileMenu.classList.contains('hidden')) {
+      icon.classList.remove('ri-close-line');
+      icon.classList.add('ri-menu-line');
+    } else {
+      icon.classList.remove('ri-menu-line');
+      icon.classList.add('ri-close-line');
+    }
+  });
+  
+  // Close mobile menu when clicking on a link
+  const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+  mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      mobileMenu.classList.add('hidden');
+      const icon = mobileMenuButton.querySelector('i');
+      icon.classList.remove('ri-close-line');
+      icon.classList.add('ri-menu-line');
+    });
+  });
+});
+</script>
+
+<!-- Progress Chart Script -->
+<script id="progress-chart-script">
+document.addEventListener('DOMContentLoaded', function() {
+  const progressChart = echarts.init(document.getElementById('progress-chart'));
+  
+  const option = {
+    animation: false,
+    series: [
+      {
+        name: 'Progress',
+        type: 'pie',
+        radius: ['70%', '90%'],
+        avoidLabelOverlap: false,
+        label: {
+          show: false
+        },
+        emphasis: {
+          scale: false
+        },
+        data: [
+          { value: 42, name: 'Completed', itemStyle: { color: '#10b981' } },
+          { value: 58, name: 'Remaining', itemStyle: { color: '#1e293b' } }
+        ]
+      }
+    ]
+  };
+  
+  progressChart.setOption(option);
+  
+  // Resize chart when window size changes
+  window.addEventListener('resize', function() {
+    progressChart.resize();
+  });
+});
+</script>
+
+<!-- Category Filter Script -->
+<script id="category-filter-script">
+document.addEventListener('DOMContentLoaded', function() {
+  const categoryTabs = document.querySelectorAll('.category-tab');
+  const cybersecuritySection = document.getElementById('cybersecurity-section');
+  const developmentSection = document.getElementById('development-section');
+  const toolsSection = document.getElementById('tools-section');
+  
+  categoryTabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      // Remove active class from all tabs
+      categoryTabs.forEach(t => t.classList.remove('active', 'text-primary'));
+      categoryTabs.forEach(t => t.classList.add('text-gray-300'));
+      
+      // Add active class to clicked tab
+      this.classList.add('active', 'text-primary');
+      this.classList.remove('text-gray-300');
+      
+      // Show/hide sections based on selected category
+      const category = this.getAttribute('data-category');
+      
+      if (category === 'all') {
+        cybersecuritySection.style.display = 'block';
+        developmentSection.style.display = 'block';
+        toolsSection.style.display = 'block';
+      } else if (category === 'cybersecurity') {
+        cybersecuritySection.style.display = 'block';
+        developmentSection.style.display = 'none';
+        toolsSection.style.display = 'none';
+      } else if (category === 'development') {
+        cybersecuritySection.style.display = 'none';
+        developmentSection.style.display = 'block';
+        toolsSection.style.display = 'none';
+      } else if (category === 'tools') {
+        cybersecuritySection.style.display = 'none';
+        developmentSection.style.display = 'none';
+        toolsSection.style.display = 'block';
+      }
+    });
+  });
+});
+</script>
+
+<!-- Toggle Details Script -->
+<script id="toggle-details-script">
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleDetailsButtons = document.querySelectorAll('.toggle-details-btn');
+  const toggleDetailsCheckbox = document.getElementById('toggle-details');
+  
+  // Individual toggle buttons
+  toggleDetailsButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      const detailsContent = this.parentElement.previousElementSibling;
+      detailsContent.classList.toggle('hidden');
+      
+      const buttonText = this.querySelector('span');
+      const buttonIcon = this.querySelector('i');
+      
+      if (detailsContent.classList.contains('hidden')) {
+        buttonText.textContent = 'Show Details';
+        buttonIcon.classList.remove('ri-arrow-up-s-line');
+        buttonIcon.classList.add('ri-arrow-down-s-line');
+      } else {
+        buttonText.textContent = 'Hide Details';
+        buttonIcon.classList.remove('ri-arrow-down-s-line');
+        buttonIcon.classList.add('ri-arrow-up-s-line');
+      }
+    });
+  });
+  
+  // Global toggle switch
+  toggleDetailsCheckbox.addEventListener('change', function() {
+    const detailsContents = document.querySelectorAll('.details-content');
+    const showDetails = this.checked;
+    
+    detailsContents.forEach(content => {
+      if (showDetails) {
+        content.classList.remove('hidden');
+      } else {
+        content.classList.add('hidden');
+      }
+    });
+    
+    // Update button text and icons
+    toggleDetailsButtons.forEach(button => {
+      const buttonText = button.querySelector('span');
+      const buttonIcon = button.querySelector('i');
+      
+      if (showDetails) {
+        buttonText.textContent = 'Hide Details';
+        buttonIcon.classList.remove('ri-arrow-down-s-line');
+        buttonIcon.classList.add('ri-arrow-up-s-line');
+      } else {
+        buttonText.textContent = 'Show Details';
+        buttonIcon.classList.remove('ri-arrow-up-s-line');
+        buttonIcon.classList.add('ri-arrow-down-s-line');
+      }
+    });
+  });
+});
+</script>
+
+<!-- Search Script -->
+<script id="search-script">
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.querySelector('.search-input');
+  const courseCards = document.querySelectorAll('.card');
+  
+  searchInput.addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    
+    courseCards.forEach(card => {
+      const courseTitle = card.querySelector('h3').textContent.toLowerCase();
+      const courseDescription = card.querySelector('p').textContent.toLowerCase();
+      
+      if (courseTitle.includes(searchTerm) || courseDescription.includes(searchTerm)) {
+        card.parentElement.style.display = 'block';
+      } else {
+        card.parentElement.style.display = 'none';
+      }
+    });
+  });
+});
+</script>
+
+<!-- Quote Refresh Script -->
+<script id="quote-refresh-script">
+document.addEventListener('DOMContentLoaded', function() {
+  const refreshQuoteButton = document.getElementById('refresh-quote');
+  const quoteElement = refreshQuoteButton.parentElement.previousElementSibling.previousElementSibling;
+  const authorElement = refreshQuoteButton.parentElement.previousElementSibling;
+  
+  const quotes = [
+    { quote: "The beautiful thing about learning is that nobody can take it away from you.", author: "B.B. King" },
+    { quote: "Live as if you were to die tomorrow. Learn as if you were to live forever.", author: "Mahatma Gandhi" },
+    { quote: "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.", author: "Malcolm X" },
+    { quote: "The more that you read, the more things you will know. The more that you learn, the more places you'll go.", author: "Dr. Seuss" },
+    { quote: "An investment in knowledge pays the best interest.", author: "Benjamin Franklin" },
+    { quote: "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice.", author: "Brian Herbert" }
+  ];
+  
+  refreshQuoteButton.addEventListener('click', function() {
+    let randomIndex;
+    let currentQuote = quoteElement.textContent.trim();
+    
+    // Make sure we get a different quote
+    do {
+      randomIndex = Math.floor(Math.random() * quotes.length);
+    } while (quotes[randomIndex].quote === currentQuote && quotes.length > 1);
+    
+    // Add fade-out and fade-in animation
+    quoteElement.style.opacity = 0;
+    authorElement.style.opacity = 0;
+    
+    setTimeout(() => {
+      quoteElement.textContent = quotes[randomIndex].quote;
+      authorElement.textContent = "— " + quotes[randomIndex].author;
+      
+      quoteElement.style.opacity = 1;
+      authorElement.style.opacity = 1;
+    }, 300);
+  });
+});
+</script>
+</body>
+</html>
