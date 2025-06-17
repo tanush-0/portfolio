@@ -20,7 +20,7 @@ tanush-0/
 
 ## 🚀 Deployment
 
-This site is deployed automatically using **GitHub Actions** and **GitHub Pages**. Any push to the `main` branch will trigger a deployment to: https://tanush-0.github.io/Site/
+This site is deployed automatically using **GitHub Actions** and **GitHub Pages**. Any push to the `main` branch will trigger a deployment to: https://tanush-0.github.io/portfolio/
 
 ## ✨ Features
 
